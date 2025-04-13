@@ -90,16 +90,21 @@ export default function TodoList() {
     renderTdo = todoone;
   }
 
-  const render = renderTdo.map((t) => {
-    return (
-      <Todocomp
-        key={t.id}
-        todo={t}
-        handleopen={handleopen}
-        handleopenupdate={handleopenupdate}
-      />
+  const render =
+    Array.isArray(renderTdo) && renderTdo.length > 0 ? (
+      renderTdo.map((t) => {
+        return (
+          <Todocomp
+            key={t.id || t.index}
+            todo={t}
+            handleopen={handleopen}
+            handleopenupdate={handleopenupdate}
+          />
+        );
+      })
+    ) : (
+      <p>لا توجد مهام حالياً.</p>
     );
-  });
 
   function ToggleButtons() {
     const hanndlefltr = (e) => {

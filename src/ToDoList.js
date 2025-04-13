@@ -70,9 +70,7 @@ export default function TodoList() {
 
   const comp = useMemo(
     () =>
-      todoone.filter((t) => {
-        return t.iscomp;
-      }),
+      todoone && Array.isArray(todoone) ? todoone.filter((t) => t.iscomp) : [],
     [todoone]
   );
 

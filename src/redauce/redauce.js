@@ -13,7 +13,7 @@ export const hanndlereduce = (Newstate, action) => {
           des: "",
           iscomp: false,
         };
-        const upd = [...Newstate, newtodo];
+        const upd = [...(Newstate || []), newtodo];
         localStorage.setItem("tdos", JSON.stringify(upd));
         return upd;
       }
